@@ -133,12 +133,35 @@ Then add the SIMULATOR inside ISAAC SIM by going to the Extensions Tab and enabl
 ```
 
 
+# Step 2 : Installation of PX4-Autopilot
+
+### a. Install the dependencies
+```bash
+sudo apt install git make cmake python3-pip
+pip install kconfiglib jinja2 empy jsonschema pyros-genmsg packaging toml numpy future
+```
+
+### b. Cloning and Configuration
+```bash
+git clone https://github.com/PX4/PX4-Autopilot.git
+cd PX4-Autopilot
+# Checkout to the latest stable release
+git checkout v1.14.3
+
+# Initiate all the submodules. Note this will download modules such as SITL-gazebo which we do not need
+# but this is the safest way to make sure that the PX4-Autopilot and its submodules are all checked out in
+# a stable and well tested release
+git submodule update --init --recursive
+
+# Compile the code in SITL mode
+make px4_sitl_default none
+```
 
 
 
 
 
-# Step 2 : MAVSDK Server – Build, Install, and Run (Linux)
+# Step 3 : MAVSDK Server – Build, Install, and Run (Linux)
 
 ## Prerequisites
 
